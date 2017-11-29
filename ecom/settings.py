@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SETTINGs_DIR = os.path.dirname(__file__) #便于后面搜索templates的目录
+SETTINGS_DIR = os.path.dirname(__file__) #便于后面搜索templates的目录
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -56,7 +56,9 @@ ROOT_URLCONF = 'ecom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(SETTINGS_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'ecom.utils.context_processors.ecom',
             ],
         },
     },
@@ -105,4 +108,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+# 在给定的路径中寻找静态资源
+STATICFILES_DIRS = (
+    os.path.join(SETTINGS_DIR, 'static'),
+)
 STATIC_URL = '/static/'
+
+# 用户上传文件位置
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# 站点设置
+SITE_NAME = 'Ecom_project'
+META_KEYWORDS = 'Ecom_project......'
+META_DESCRIPTION = '''Ecom_project............'''

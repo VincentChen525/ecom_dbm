@@ -1,6 +1,7 @@
 *.pyc
 ecom/__pycache__
 myvenv
+.DS_Store
 
 # Distribution / packaging
 .Python
