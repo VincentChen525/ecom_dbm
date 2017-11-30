@@ -19,5 +19,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('ecom.apps.catalog.urls')),
+    url(r'^cart/',include('ecom.apps.cart.urls',namespace = 'cart')),
+    url(r'^', include('ecom.apps.catalog.urls',namespace = 'catalog')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #MEDIA_URL处理用户上传的文件
