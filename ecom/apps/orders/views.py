@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import OrderItem
 from .forms import OrderCreateForm
 from ecom.apps.cart.cart import Cart
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import get_object_or_404
+from .models import Order
 
 def order_create(request):
     cart = Cart(request)
@@ -18,3 +21,8 @@ def order_create(request):
     else:
         form = OrderCreateForm()
     return render(request, 'orders/order_create.html', {'cart': cart, 'form': form})
+
+@staff_member_required
+def admin_order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'orders/order_detail.html', {'order': order})
