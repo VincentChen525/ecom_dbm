@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'ecom.apps.catalog',
     'ecom.apps.cart',
+    'ecom.apps.orders',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,7 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #re'ecom.utils.context_processors.ecom',
+                'ecom.apps.cart.context_processors.cart',
             ],
         },
     },
