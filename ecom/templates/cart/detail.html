@@ -24,7 +24,7 @@
                     <tr>
                         <td>
                             <a href="{{ prouct.get_absolute_url }}">
-                                ![]({% if product.image %}{{ product.image.url}}{% else %}static {% endif %})
+                                <img src="{% if product.image %}{{ product.image.url }}{% else %} static {% endif %}">
                             </a>
                         </td>
                         <td>{{ product.name }}</td>
